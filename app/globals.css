@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 201 100% 30%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 201 100% 30%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 201 100% 30%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 201 100% 30%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.greek-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L8,0 L8,8 L16,8 L16,0 L24,0 L24,8 L32,8 L32,0 L40,0 L40,8 L48,8 L48,0 L56,0 L56,8 L64,8 L64,0 L72,0 L72,8 L80,8 L80,0 L88,0 L88,8 L96,8 L96,0 L104,0 L104,8 L112,8 L112,0 L120,0 L120,8 L128,8 L128,0 L136,0 L136,8 L144,8 L144,0 L152,0 L152,8 L160,8 L160,0 L168,0 L168,8 L176,8 L176,0 L184,0 L184,8 L192,8 L192,0 L200,0 L200,8 L208,8 L208,0 L216,0 L216,8 L224,8 L224,0 L232,0 L232,8 L240,8 L240,0 L248,0 L248,8 L256,8 L256,0 L264,0 L264,8 L272,8 L272,0 L280,0 L280,8 L288,8 L288,0 L296,0 L296,8 L304,8 L304,0 L312,0 L312,8 L320,8 L320,0 L328,0 L328,8 L336,8 L336,0 L344,0 L344,8 L352,8 L352,0 L360,0 L360,8 L368,8 L368,0 L376,0 L376,8 L384,8 L384,0 L392,0 L392,8 L400,8 L400,0 L408,0 L408,8 L416,8 L416,0 L424,0 L424,8 L432,8 L432,0 L440,0 L440,8 L448,8 L448,0 L456,0 L456,8 L464,8 L464,0 L472,0 L472,8 L480,8 L480,0 L488,0 L488,8 L496,8 L496,0 L504,0 L504,8 L512,8 L512,0 L520,0 L520,8 L528,8 L528,0 L536,0 L536,8 L544,8 L544,0 L552,0 L552,8 L560,8 L560,0 L568,0 L568,8 L576,8 L576,0 L584,0 L584,8 L592,8 L592,0 L600,0 L600,8 L608,8 L608,0 L616,0 L616,8 L624,8 L624,0 L632,0 L632,8 L640,8 L640,0 L648,0 L648,8 L656,8 L656,0 L664,0 L664,8 L672,8 L672,0 L680,0 L680,8 L688,8 L688,0 L696,0 L696,8 L704,8 L704,0 L712,0 L712,8 L720,8 L720,0 L728,0 L728,8 L736,8 L736,0 L744,0 L744,8 L752,8 L752,0 L760,0 L760,8 L768,8 L768,0 L776,0 L776,8 L784,8 L784,0 L792,0 L792,8 L800,8 L800,0 L808,0 L808,8 L816,8 L816,0 L824,0 L824,8 L832,8 L832,0 L840,0 L840,8 L848,8 L848,0 L856,0 L856,8 L864,8 L864,0 L872,0 L872,8 L880,8 L880,0 L888,0 L888,8 L896,8 L896,0 L904,0 L904,8 L912,8 L912,0 L920,0 L920,8 L928,8 L928,0 L936,0 L936,8 L944,8 L944,0 L952,0 L952,8 L960,8 L960,0 L968,0 L968,8 L976,8 L976,0 L984,0 L984,8 L992,8 L992,0 L1000,0' stroke='%23016099' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  height: 24px;
+  width: 100%;
+}
