@@ -10,6 +10,7 @@ import { ChevronLeft, Trash2, Edit, Plus, Minus, Store, Car, CarFront } from "lu
 import { BottomNav } from "@/components/bottom-nav"
 import { useCart } from "@/context/cart-context"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { CartRecommendationModal } from "@/components/cart-recommendation-modal"
 
 // Mock previous orders data
 const previousOrders = [
@@ -119,6 +120,9 @@ export default function CartPage() {
 
   return (
     <main className="flex flex-col h-screen relative">
+      {/* Cart Recommendation Modal */}
+      <CartRecommendationModal />
+
       {/* Fixed header */}
       <div className="bg-taziki-blue fixed top-0 left-0 right-0 z-50">
         <div className="flex items-center justify-between px-4 h-16">
