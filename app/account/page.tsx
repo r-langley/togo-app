@@ -48,7 +48,9 @@ export default function AccountPage() {
   const [showGiftCards, setShowGiftCards] = useState(false)
 
   useEffect(() => {
-    // Check if user is logged in
+    // Check if user is logged in - only on client side
+    if (typeof window === "undefined") return
+
     const loggedIn = localStorage.getItem("isLoggedIn") === "true"
     setIsLoggedIn(loggedIn)
 
@@ -59,8 +61,10 @@ export default function AccountPage() {
   }, [])
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn")
-    localStorage.removeItem("userName")
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("isLoggedIn")
+      localStorage.removeItem("userName")
+    }
     setIsLoggedIn(false)
     setUserName("Guest User")
   }
@@ -72,6 +76,9 @@ export default function AccountPage() {
 
   return (
     <main className="flex flex-col h-screen">
+      {/* Rest of the component remains unchanged */}
+      {/* ... */}
+
       {/* Custom header */}
       <div className="bg-taziki-blue">
         <div className="flex items-center justify-between px-4 h-16">

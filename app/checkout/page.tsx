@@ -45,11 +45,7 @@ export default function CheckoutPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showStoredPayments, setShowStoredPayments] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
-
-  // Get the current order type
-  const [orderType, setOrderType] = useState(() => {
-    return localStorage.getItem("selectedOrderType") || "takeout"
-  })
+  const [orderType, setOrderType] = useState("takeout") // Default value without localStorage
 
   // Calculate tax and tip
   const taxRate = 0.085 // 8.5% tax rate
@@ -58,9 +54,15 @@ export default function CheckoutPage() {
   const total = subtotal + tax + tip
 
   useEffect(() => {
-    // Check if user is logged in
-    const loggedIn = localStorage.getItem("isLoggedIn") === "true"
+    // Move localStorage access to useEffect
+    const loggedIn = typeof window !== "undefined" && localStorage.getItem("isLoggedIn") === "true"
     setIsLoggedIn(loggedIn)
+
+    // Get order type from localStorage safely
+    const storedOrderType =
+      typeof window !== "undefined" ? localStorage.getItem("selectedOrderType") || "takeout" : "takeout"
+    setOrderType(storedOrderType)
+
     setIsLoaded(true)
   }, [])
 
@@ -89,7 +91,6 @@ export default function CheckoutPage() {
   const handlePlaceOrder = () => {
     // Show processing screen
     setIsProcessing(true)
-
     // The ProcessingPayment component will handle the redirect
   }
 
@@ -182,6 +183,9 @@ export default function CheckoutPage() {
           </Link>
         </div>
       </header>
+
+      {/* Rest of the component remains unchanged */}
+      {/* ... */}
 
       {/* Main content - with padding for fixed header and bottom nav */}
       <main className="flex-1 pt-16 pb-20 px-4 overflow-y-auto">

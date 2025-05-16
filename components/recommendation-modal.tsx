@@ -43,6 +43,9 @@ export function RecommendationModal() {
   const recommendation = recommendations[Math.floor(Math.random() * recommendations.length)]
 
   useEffect(() => {
+    // Only run on client side
+    if (typeof window === "undefined") return
+
     // Check if we've shown the recommendation recently
     const lastShown = localStorage.getItem("recommendationLastShown")
     const now = new Date().getTime()

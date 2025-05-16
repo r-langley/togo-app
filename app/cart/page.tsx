@@ -1,4 +1,5 @@
 "use client"
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -37,16 +38,17 @@ export default function CartPage() {
   const { items, removeItem, updateQuantity, itemCount, subtotal, addItem } = useCart()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [activeTab, setActiveTab] = useState("current")
-
-  // Get the current order type
-  const [orderType, setOrderType] = useState(() => {
-    return localStorage.getItem("selectedOrderType") || "takeout"
-  })
+  const [orderType, setOrderType] = useState("takeout") // Default value without localStorage
 
   useEffect(() => {
-    // Check if user is logged in
-    const loggedIn = localStorage.getItem("isLoggedIn") === "true"
+    // Move localStorage access to useEffect
+    const loggedIn = typeof window !== "undefined" && localStorage.getItem("isLoggedIn") === "true"
     setIsLoggedIn(loggedIn)
+
+    // Get order type from localStorage safely
+    const storedOrderType =
+      typeof window !== "undefined" ? localStorage.getItem("selectedOrderType") || "takeout" : "takeout"
+    setOrderType(storedOrderType)
   }, [])
 
   const tax = subtotal * 0.085 // Assuming 8.5% tax rate

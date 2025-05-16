@@ -23,9 +23,27 @@ export default function MenuPage() {
   const tabsRef = useRef<HTMLDivElement>(null)
 
   // Get the order type from URL params or localStorage
-  const locationId = searchParams.get("locationId") || "1"
-  const orderType = searchParams.get("orderType") || "pickup"
-  const subType = searchParams.get("subType") || localStorage.getItem("selectedOrderType") || "takeout"
+  const locationId = searchParams?.get("locationId") || "1"
+  const orderType = searchParams?.get("orderType") || "pickup"
+  const [subType, setSubType] = useState<string>("takeout")
+
+  useEffect(() => {
+    // Get subType from URL or localStorage safely
+    const urlSubType = searchParams?.get("subType")
+    if (urlSubType) {
+      setSubType(urlSubType)
+      // Store in localStorage for future use
+      if (typeof window !== "undefined") {
+        localStorage.setItem("selectedOrderType", urlSubType)
+      }
+    } else if (typeof window !== "undefined") {
+      const storedSubType = localStorage.getItem("selectedOrderType")
+      setSubType(storedSubType || "takeout")
+    }
+  }, [searchParams])
+
+  // Rest of the component remains unchanged
+  // ...
 
   // Mock location data
   const location = {
@@ -313,6 +331,7 @@ export default function MenuPage() {
                         src={
                           item.image ||
                           "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KlWWko2ii0hDl1ZVrxFXG0Ehr9Emy3.png" ||
+                          "/placeholder.svg" ||
                           "/placeholder.svg" ||
                           "/placeholder.svg"
                         }
